@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Albums</title>
+</head>
+<body>
+    <h1>Music Albums</h1>
+    <button><a href="{% url 'home' %}">Back to Home</a></button>
+    <button><a href="{% url 'music:create' %}">Create Album</a></button>
+    {% for song in music %}
+        <a href="{{ song.get_detail_url }}"><h3>{{ song.album_title }}</h3></a>
+    {% empty %}
+        <h3>No Music</h3>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% if sport %}Update Sport Event {% else %}Create Sport Event {% endif %}</title>
+</head>
+<body>
+    <h1>{% if sport %}Update Sport Event {% else %}Create Sport Event{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {% if sport %}
+            <button><a href="{{ sport.get_detail_url }}" >Back to Detail</a></button><br><br>
+        {% else %}
+            <button><a href="{% url 'sports:list' %}">Back to List</a></button><br><br>
+        {% endif %}
+
+        <label for="event_name">Event Name</label><br>
+        <input type="text" id="event_name" name="event_name" value="{{ sport.event_name }}"><br><br>
+
+        <label for="location">Location</label><br>
+        <input type="text" id="location" name="location" value="{{ sport.location }}"><br><br>
+
+        <label for="date">Date</label><br>
+        <input type="date" id="date" name="date" value="{{ sport.date }}"><br><br>
+
+        <label for="sport_type">Sport Type</label><br>
+        <input type="text" id="sport_type" name="sport_type" value="{{ sport.sport_type }}"><br><br>
+
+        <button type="submit">{% if sport %}Update {% else %}Create{% endif %}</button>
+    </form>
+</body>
+</html>

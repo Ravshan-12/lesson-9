@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Destinations</title>
+</head>
+<body>
+    <h1>Travel Destinations</h1>
+    <button><a href="{% url 'home' %}">Back to Home</a></button>
+    <button><a href="{% url 'travel:create' %}">Create Destination</a></button>
+    {% for tvl in travel %}
+        <a href="{{ tvl.get_detail_url }}"><h3>{{ tvl.destination_name }}</h3></a>
+    {% empty %}
+        <h3>No Travel Destinations</h3>
+    {% endfor %}
+</body>
+</html>
